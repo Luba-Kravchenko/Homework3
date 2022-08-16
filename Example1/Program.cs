@@ -23,28 +23,31 @@ class Program
 
 
 
-int x1 = Coordinate("x", "A");
-int y1 = Coordinate("y", "A");
-int z1 = Coordinate("z", "A");
-int x2 = Coordinate("x", "B");
-int y2 = Coordinate("y", "B");
-int z2 = Coordinate("z", "B");
+Console.Write("Введите число: ");
+int cube = Convert.ToInt32(Console.ReadLine());
 
-int Coordinate(string coorName, string pointName)
+void Cube(int[] cube)
 {
-    Console.Write($"Введите координату {coorName} точки {pointName}: ");
-    return Convert.ToInt16(Console.ReadLine());
+    int i = 0;
+    int length = cube.Length;
+    while (i < length)
+    {
+        cube[i] = Convert.ToInt32(Math.Pow(i, 3));
+        i++;
+    }
 }
 
-double Decision(double x1, double x2,
-                double y1, double y2,
-                double z1, double z2)
+void PrintArry(int[] coll)
 {
-    return Math.Sqrt(Math.Pow((x2 - x1), 2) +
-                     Math.Pow((y2 - y1), 2) +
-                     Math.Pow((z2 - z1), 2));               
+    int count = coll.Length;
+    int index = 1;
+    while (index < count)
+    {
+        Console.Write(coll[index] + " ");
+        index++;
+    }
 }
 
-double segmentLength = Math.Round(Decision(x1, x2, y1, y2, z1, z2), 2);
-
-Console.WriteLine($"Расстояние между точками в 3D {segmentLength}");
+int[] arry = new int[cube + 1];
+Cube(arry);
+PrintArry(arry);
